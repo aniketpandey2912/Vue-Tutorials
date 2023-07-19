@@ -10,7 +10,7 @@
 </template>
 
 <!-- This way of writing script is COMPOSITION API - Modern way -->
-<!-- <script setup>
+<script setup>
 // to make variables reactive, we need "ref"
 import { ref } from "vue";
 
@@ -31,9 +31,32 @@ const reset = () => {
   count.value = 0;
   console.log(count);
 };
+</script>
+
+<!-- COMPOSITION API - Old Method -->
+<!-- <script>
+export default {
+  data() {
+    return {
+      count: 0,
+    };
+  },
+
+  methods: {
+    increment() {
+      this.count++;
+    },
+
+    decrement() {
+      this.count--;
+    },
+
+    reset() {
+      this.count = 0;
+    },
+  },
+};
 </script> -->
-
-
 
 <style scoped>
 button {
