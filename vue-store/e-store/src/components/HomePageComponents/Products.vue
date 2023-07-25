@@ -33,5 +33,7 @@ const products = productsData;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: auto;
+  padding: 10px;
 }
 </style>

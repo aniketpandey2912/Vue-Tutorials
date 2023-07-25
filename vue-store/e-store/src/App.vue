@@ -1,12 +1,11 @@
 <template>
   <div id="container">
-    <HomeView />
+    <!-- Don't worry about routes now, we have vue-router -->
+    <router-view></router-view>
   </div>
 </template>
 
-<script setup>
-import HomeView from "./views/Home.vue";
-</script>
+<script setup></script>
 
 <style scoped>
 #container {

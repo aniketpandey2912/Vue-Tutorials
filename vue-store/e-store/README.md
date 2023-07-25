@@ -71,3 +71,7 @@ Note - In creation phase, we can't access DOM nodes. DOM nodes are accessibe in 
    })
 
 # Vue Router
+
+# V - Model
+
+- For reading data typed in input tag dynamically
