@@ -86,3 +86,56 @@ Note - In creation phase, we can't access DOM nodes. DOM nodes are accessibe in 
 
 - Function should be an async function.
 - Call Should be made once **component is MOUNTED using lifecycle hook (onMounted)**
+- We can use **fetch** or any 3rd party library like **axios**, etc.
+
+# FIREBASE
+
+- Cloud server created by the "Google".
+- We can use cloud database to make it available globally.
+
+## Steps for Setup
+
+### Project Setup : Steps
+
+- Goto firebase and login/signup.
+- Click on `Get Started` and make a new project.
+- Click `Contiue`
+- Disable Google Analytics (optional).
+- Click on `Create project`
+- Once project is ready, click `Contiue`
+
+### Add Firebase to your app : Steps
+
+- Click on web `</>` icon.
+- Give name
+- Check the box.
+- Click `Register app`
+- Save the config code somewhere. (Don't worry if you didn't save, you can always find it under `settings > Project settings` later following below steps).
+- Keep clicking `Next`
+
+### Create Database / Firestore : Steps
+
+- Goto `Cloud Firestore`.
+- Click `Create database`.
+- Check `Start in Test mode`.
+- Click `Next`.
+- Choose the closest server.
+- Click `Enable`.
+- Perfect, now You're ready to actually add collections.
+
+### Connnect Firebase to your app : Steps
+
+- Goto `Settings > Project settings` you'll find the config code.
+- Click `Goto Docs` icon.
+- Click `Firebase Fundamentals`
+- Click `Add Firebase to your apps`. (Select iOS, Android, web as per your machine. Mine is Web).
+- You'll find how to get started, just follow the steps.
+
+- Step 1: Create a Firebase project and register your app (we already did above).
+- Step 2: Install the SDK and initialize Firebase
+
+  - `npm install firebase`
+  - Create `firebase.js` file under "src" folder and copy the config code.
+  - Visit 'docs' for more detials : [https://firebase.google.com/docs/]
+
+- Now, you're ready to import different methods in `firebase.js` and export to use them.

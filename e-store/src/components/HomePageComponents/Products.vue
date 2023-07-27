@@ -13,8 +13,9 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 import productsData from "../../data/products.json";
 // console.log(productsData);
-// const products = productsData;
+let products = productsData;
 
+/*
 // API call should be made after component is MOUNTED
 let products = ref([]);
 onMounted(async () => {
@@ -28,6 +29,25 @@ onMounted(async () => {
   let response = await axios.get("https://fakestoreapi.com/products");
   // console.log("response:", response);
   products.value = response.data;
+});
+
+*/
+
+// import FIREBASE Utitlities
+import { db, getDocs, collection } from "../../firebase";
+// console.log("db:", db);
+
+const getData = async () => {
+  const querySnapshot = await getDocs(collection(db, "products"));
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  });
+};
+
+onMounted(async () => {
+  products = await getData();
+  console.log("Data:", products);
 });
 </script>
 <style scoped>

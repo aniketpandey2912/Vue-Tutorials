@@ -1,6 +1,19 @@
 <template>
   <div>
     <NavbarComponent />
+    <AddProductFormComponent />
+  </div>
+</template>
+<script setup>
+import NavbarComponent from "../components/HomePageComponents/Navbar.vue";
+import AddProductFormComponent from "../components/AdminPageComponents/addProductForm.vue";
+</script>
+<style scoped></style>
+
+<!-- For reference -->
+<!-- <template>
+  <div>
+    <NavbarComponent />
     <h4>This is Admin Page</h4>
     <input type="text" v-model="form.name" />
     <input type="number" v-model="form.contact" />
@@ -21,4 +34,4 @@ const form = reactive({
   city: "",
 });
 </script>
-<style scoped></style>
+<style scoped></style> -->
