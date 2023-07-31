@@ -139,3 +139,8 @@ Note - In creation phase, we can't access DOM nodes. DOM nodes are accessibe in 
   - Visit 'docs' for more detials : [https://firebase.google.com/docs/]
 
 - Now, you're ready to import different methods in `firebase.js` and export to use them.
+
+# What is the difference between Firebase storage and Firestore ?
+
+Firesbase storage are used for storing images, videos, etc.
+Firestore is for storing json data
