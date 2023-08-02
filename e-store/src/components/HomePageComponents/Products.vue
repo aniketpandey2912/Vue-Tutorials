@@ -1,10 +1,10 @@
 <template>
   <div id="products">
-    <div id="individual_product" v-for="element in products">
+    <div id="individual_product" v-for="product in products">
       <!-- :src is data binding technique to attributes -->
-      <img :src="element.image" :alt="element.title" />
-      <p>{{ element.title }}</p>
-      <p>{{ element.price }}</p>
+      <img :src="product.imageUrl" :alt="product.title" />
+      <p>{{ product.name }}</p>
+      <p>{{ product.price }}</p>
     </div>
   </div>
 </template>
@@ -16,17 +16,19 @@ import { ref, onMounted } from "vue";
 import { db, getDocs, collection } from "../../firebase";
 // console.log("db:", db);
 
+let products = ref([]);
 const getData = async () => {
   const querySnapshot = await getDocs(collection(db, "products"));
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
     console.log(doc.id, " => ", doc.data());
+    products.value.push(doc.data());
   });
 };
 
-onMounted(async () => {
-  products = await getData();
-  console.log("Data:", products);
+onMounted(() => {
+  getData();
+  console.log(products);
 });
 </script>
 
@@ -58,11 +60,11 @@ onMounted(async () => {
 <!-- For Reference -->
 <!-- <template>
   <div id="products">
-    <div id="individual_product" v-for="element in products">
+    <div id="individual_product" v-for="product in products">
       :src is data binding technique to attributes
-      <img :src="element.image" :alt="element.title" />
-      <p>{{ element.title }}</p>
-      <p>{{ element.price }}</p>
+      <img :src="product.image" :alt="product.title" />
+      <p>{{ product.title }}</p>
+      <p>{{ product.price }}</p>
     </div>
   </div>
 </template>

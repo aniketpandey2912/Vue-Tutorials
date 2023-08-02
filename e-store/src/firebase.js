@@ -1,7 +1,12 @@
 import { initializeApp } from "firebase/app";
 
 // Firebase Firestore functions
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+} from "firebase/firestore/lite";
 
 // Firebase storage functions
 import {
@@ -33,4 +38,5 @@ export {
   ref,
   uploadBytesResumable,
   getDownloadURL,
+  addDoc,
 };

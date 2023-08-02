@@ -40,10 +40,13 @@
 import { ref, reactive } from "vue";
 
 import {
+  db,
+  collection,
   getStorage,
   ref as firebaseRef,
   uploadBytesResumable,
   getDownloadURL,
+  addDoc,
 } from "../../firebase.js";
 
 const file = ref(null);
@@ -93,9 +96,12 @@ const fileUpload = () => {
   );
 };
 
-const onSubmit = () => {
+const onSubmit = async () => {
   console.log(form);
   // we have data ready, now we have to store the data in FireStore
+  // addDoc(collection(db,"collectionName"), data)
+  const docRef = await addDoc(collection(db, "products"), form);
+  console.log("Document written with ID: ", docRef.id);
 };
 </script>
 
