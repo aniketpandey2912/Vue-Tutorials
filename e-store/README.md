@@ -72,6 +72,9 @@ Note - In creation phase, we can't access DOM nodes. DOM nodes are accessibe in 
 
 # Vue Router
 
+- useRouter : hook from "vue-router" package for moving from one page to another
+- useRoute : hook from "vue-router" to catch the parameters from url
+
 # V - Model
 
 - For reading data typed in input tag dynamically

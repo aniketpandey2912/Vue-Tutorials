@@ -1,8 +1,12 @@
 <template>
   <div id="products">
-    <div id="individual_product" v-for="product in products">
+    <div
+      id="individual_product"
+      v-for="product in products"
+      @click="showProduct(product.id)"
+    >
       <!-- :src is data binding technique to attributes -->
-      <img :src="product.imageUrl" :alt="product.title" />
+      <img :src="product.imageUrl" :alt="product.name" />
       <p>{{ product.name }}</p>
       <p>{{ product.price }}</p>
     </div>
@@ -11,6 +15,9 @@
 <script setup>
 import axios from "axios";
 import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 // import FIREBASE Utitlities
 import { db, getDocs, collection } from "../../firebase";
@@ -20,16 +27,23 @@ let products = ref([]);
 const getData = async () => {
   const querySnapshot = await getDocs(collection(db, "products"));
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
-    products.value.push(doc.data());
+    let product = doc.data();
+    product.id = doc.id;
+    // console.log(product);
+    products.value.push(product);
   });
 };
 
-onMounted(() => {
-  getData();
-  console.log(products);
+onMounted(async () => {
+  await getData();
+  console.log("Products:", products.value);
 });
+
+// Show single product details
+const showProduct = (prodID) => {
+  console.log("clicked", prodID);
+  router.push(`productDetails/${prodID}`);
+};
 </script>
 
 <style scoped>

@@ -6,6 +6,8 @@ import {
   collection,
   getDocs,
   addDoc,
+  doc,
+  getDoc,
 } from "firebase/firestore/lite";
 
 // Firebase storage functions
@@ -39,4 +41,6 @@ export {
   uploadBytesResumable,
   getDownloadURL,
   addDoc,
+  doc,
+  getDoc,
 };
