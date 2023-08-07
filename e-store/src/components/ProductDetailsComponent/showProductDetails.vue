@@ -2,10 +2,15 @@
   <div>
     <h1>Product Details</h1>
     <div id="individual_product">
-      <!-- :src is data binding technique to attributes -->
-      <img :src="product.imageUrl" :alt="product.name" />
-      <p>{{ product.name }}</p>
-      <p>{{ product.price }}</p>
+      <div id="left">
+        <!-- :src is data binding technique to attributes -->
+        <img :src="product.imageUrl" :alt="product.name" />
+      </div>
+      <div id="right">
+        <p>{{ product.name }}</p>
+        <p>{{ product.price }}</p>
+        <button>Add To Cart</button>
+      </div>
     </div>
   </div>
 </template>
@@ -38,12 +43,24 @@ onMounted(async () => {
 }
 
 #individual_product {
-  background-color: rgb(234, 230, 230);
   display: flex;
+  margin-top: 5%;
+}
+
+#left {
+  display: flex;
+  flex: 4;
+}
+
+#right {
+  display: flex;
+  flex: 6;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  padding: 10px;
+  margin-left: 3%;
+  font-size: 180%;
+}
+
+#left > img {
+  height: 70%;
 }
 </style>
