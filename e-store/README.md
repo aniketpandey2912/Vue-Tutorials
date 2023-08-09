@@ -147,3 +147,12 @@ Note - In creation phase, we can't access DOM nodes. DOM nodes are accessibe in 
 
 Firesbase storage are used for storing images, videos, etc.
 Firestore is for storing json data
+
+# Global State Management
+
+- Pinia:
+  - Tool provided by vue for global state management.
+  - It is like a one store containing all the data/state.
+  - Better readability, performance
+  - Suitable for large and complex applications.
+  - `npm install pinia` or visit [https://pinia.vuejs.org/] for more details

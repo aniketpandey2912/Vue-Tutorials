@@ -9,7 +9,12 @@
       <div id="right">
         <p>{{ product.name }}</p>
         <p>{{ product.price }}</p>
-        <button>Add To Cart</button>
+        <q-btn
+          id="addToCart_btn"
+          color="secondary"
+          label="ADD TO CART"
+          @click="addToCart(product)"
+        />
       </div>
     </div>
   </div>
@@ -19,8 +24,10 @@ import { onMounted, ref } from "vue";
 import { db, doc, getDoc } from "../../firebase.js";
 import { useRoute } from "vue-router";
 
-const route = useRoute();
+import { useCartStore } from "../../store";
 
+const route = useRoute();
+const { addToCart } = useCartStore();
 let product = ref({});
 onMounted(async () => {
   const docRef = doc(db, "products", route.params.prodID);
@@ -62,5 +69,9 @@ onMounted(async () => {
 
 #left > img {
   height: 70%;
+}
+
+#addToCart_btn {
+  width: 15%;
 }
 </style>

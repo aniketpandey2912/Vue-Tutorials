@@ -6,14 +6,17 @@
         <div>Account</div>
         <div id="cart">
           <q-icon name="shopping_cart" />
-          <div id="cart_count">1</div>
+          <div id="cart_count">{{ cartCount || 0 }}</div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useCartStore } from "../../store.js";
+const { cartCount } = useCartStore();
+</script>
 
 <style scoped>
 #navbar {
