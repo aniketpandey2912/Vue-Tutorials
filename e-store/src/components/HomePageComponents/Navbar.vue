@@ -1,12 +1,13 @@
 <template lang="">
   <div>
+    <CartPopupComponent />
     <div id="navbar">
       <div id="lhs">Home</div>
       <div id="rhs">
         <div>Account</div>
         <div id="cart">
           <q-icon name="shopping_cart" />
-          <div id="cart_count">{{ cartCount || 0 }}</div>
+          <div id="cart_count">{{ CartStore.cartCount }}</div>
         </div>
       </div>
     </div>
@@ -14,8 +15,9 @@
 </template>
 
 <script setup>
+import CartPopupComponent from "../CartComponents/cartPopup.vue";
 import { useCartStore } from "../../store.js";
-const { cartCount } = useCartStore();
+const CartStore = useCartStore();
 </script>
 
 <style scoped>
