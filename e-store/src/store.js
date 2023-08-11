@@ -16,5 +16,9 @@ export const useCartStore = defineStore("cart", () => {
     console.log(cartCount.value);
   };
 
-  return { cart, cartCount, addToCart };
+  const removeCartItem = (prodID) => {
+    cart.value = cart.value.filter((el) => el.id != prodID);
+  };
+
+  return { cart, cartCount, addToCart, removeCartItem };
 });

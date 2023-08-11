@@ -1,6 +1,6 @@
 <template>
   <div id="cart_popup">
-    <q-dialog v-model="dialog" position="right">
+    <q-dialog :seamless="true" :modelValue="dialogVisibility" position="right">
       <q-card id="cart_card" style="width: 350px">
         <q-card-section>
           <div>
@@ -9,10 +9,16 @@
 
           <q-space />
 
-          <div id="cart_products" v-for="item in 3">
+          <div id="cart_products" v-for="product in CartStore.cart">
             <div id="cart_product">
-              <div id="lhs">LHS - Image</div>
-              <div id="rhs">RHS - Name, Price</div>
+              <div id="lhs">
+                <img :src="product.imageUrl" :alt="product.name" />
+              </div>
+              <div id="rhs">
+                <p>{{ product.name }}</p>
+                <p>{{ product.price }}</p>
+                <q-icon name="delete" @click="removeCartItem(product.id)" />
+              </div>
             </div>
           </div>
         </q-card-section>
@@ -21,13 +27,20 @@
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
+import { useCartStore } from "../../store.js";
 
-const dialog = ref(true);
+const CartStore = useCartStore();
+
+defineProps(["dialogVisibility"]);
+
+const removeCartItem = (prodID) => {
+  CartStore.removeCartItem(prodID);
+};
 </script>
 <style scoped>
 #cart_card {
   height: 900px;
+  width: 400px;
   margin-top: 10%;
 }
 
@@ -45,8 +58,13 @@ const dialog = ref(true);
   flex: 6;
 }
 
+#lhs img {
+  width: 90%;
+}
+
 #rhs {
   display: flex;
   flex: 4;
+  flex-direction: column;
 }
 </style>

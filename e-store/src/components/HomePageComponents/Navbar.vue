@@ -1,12 +1,15 @@
 <template lang="">
   <div>
-    <CartPopupComponent />
+    <CartPopupComponent :dialogVisibility="dialogVisibility" />
     <div id="navbar">
       <div id="lhs">Home</div>
       <div id="rhs">
         <div>Account</div>
         <div id="cart">
-          <q-icon name="shopping_cart" />
+          <q-icon
+            name="shopping_cart"
+            @click="dialogVisibility = !dialogVisibility"
+          />
           <div id="cart_count">{{ CartStore.cartCount }}</div>
         </div>
       </div>
@@ -17,7 +20,10 @@
 <script setup>
 import CartPopupComponent from "../CartComponents/cartPopup.vue";
 import { useCartStore } from "../../store.js";
+import { ref } from "vue";
 const CartStore = useCartStore();
+
+const dialogVisibility = ref(false);
 </script>
 
 <style scoped>

@@ -34,7 +34,9 @@ onMounted(async () => {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-    product.value = docSnap.data();
+    let item = docSnap.data();
+    item.id = docSnap.id;
+    product.value = item;
   } else {
     // docSnap.data() will be undefined in this case
     console.log("No such document!");
