@@ -21,6 +21,12 @@
               </div>
             </div>
           </div>
+
+          <router-link to="/orders">
+            <div id="place_order">
+              <q-btn color="secondary" label="Proceed" />
+            </div>
+          </router-link>
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -66,5 +72,10 @@ const removeCartItem = (prodID) => {
   display: flex;
   flex: 4;
   flex-direction: column;
+}
+
+#place_order {
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 </style>
